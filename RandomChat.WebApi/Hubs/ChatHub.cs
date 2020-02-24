@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using RandomChat.WebApi.Services.Interfaces;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RandomChat.WebApi.Hubs
@@ -21,7 +23,7 @@ namespace RandomChat.WebApi.Hubs
 
         public override async Task OnConnectedAsync()
         {
-            if(_chatsContainer.NewClient(Context.ConnectionId, out string secondClient))
+            if (_chatsContainer.NewClient(Context.ConnectionId, out string secondClient))
             {
                 await Clients.Caller.SendAsync("StartChat");
                 await Clients.Client(secondClient).SendAsync("StartChat");

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomChat.WebApi", "RandomChat.WebApi\RandomChat.WebApi.csproj", "{FB6BB1E4-9B78-497E-92AF-B995ADDA1C44}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomChat.WebApi", "RandomChat.WebApi\RandomChat.WebApi.csproj", "{70D10A04-F734-4BED-87EC-7395CA9A529A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FB6BB1E4-9B78-497E-92AF-B995ADDA1C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB6BB1E4-9B78-497E-92AF-B995ADDA1C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB6BB1E4-9B78-497E-92AF-B995ADDA1C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB6BB1E4-9B78-497E-92AF-B995ADDA1C44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70D10A04-F734-4BED-87EC-7395CA9A529A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70D10A04-F734-4BED-87EC-7395CA9A529A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70D10A04-F734-4BED-87EC-7395CA9A529A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70D10A04-F734-4BED-87EC-7395CA9A529A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {300ED9C5-ACA9-4CFC-82D9-F7239C1BEF33}
+		SolutionGuid = {D1F51DA0-40A0-4ED5-BD0E-D0D469F95F4C}
 	EndGlobalSection
 EndGlobal

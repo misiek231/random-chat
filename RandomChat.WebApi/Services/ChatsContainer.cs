@@ -8,10 +8,8 @@ namespace RandomChat.WebApi.Services
 {
     public class ChatsContainer : IChatsContainer
     {
-        
-
         private string waitingClientId = null;
-        private List<Chat> chats = new List<Chat>();
+        private readonly List<Chat> chats = new List<Chat>();
 
         public string DestroyChat(string connectionId)
         {

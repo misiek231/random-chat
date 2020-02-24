@@ -17,7 +17,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    var connection = new HubConnectionBuilder().withUrl("http://192.168.100.17:5000/chat", {
+    var connection = new HubConnectionBuilder().withUrl("/chat", {
       skipNegotiation: true,
       transport: HttpTransportType.WebSockets
     }).build();
