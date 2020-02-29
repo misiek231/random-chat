@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomChat.WebApi", "RandomChat.WebApi\RandomChat.WebApi.csproj", "{70D10A04-F734-4BED-87EC-7395CA9A529A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomChat.WebApi", "RandomChat.WebApi\RandomChat.WebApi.csproj", "{70D10A04-F734-4BED-87EC-7395CA9A529A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomChat.Xamarin.Android", "RandomChat.Xamarin\RandomChat.Xamarin.Android\RandomChat.Xamarin.Android.csproj", "{D472C3E8-FC8C-4074-A6C3-8B8075D2D014}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomChat.Xamarin", "RandomChat.Xamarin\RandomChat.Xamarin\RandomChat.Xamarin.csproj", "{656658FC-CC98-4AEE-8EB6-EE293AEBC9F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomChat.Xamarin.MvvmPackage", "RandomChat.Xamarin.MvvmPackage\RandomChat.Xamarin.MvvmPackage.csproj", "{DF785E46-F403-4588-9400-393D9D8C958B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,20 @@ Global
 		{70D10A04-F734-4BED-87EC-7395CA9A529A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70D10A04-F734-4BED-87EC-7395CA9A529A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70D10A04-F734-4BED-87EC-7395CA9A529A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D472C3E8-FC8C-4074-A6C3-8B8075D2D014}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D472C3E8-FC8C-4074-A6C3-8B8075D2D014}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D472C3E8-FC8C-4074-A6C3-8B8075D2D014}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D472C3E8-FC8C-4074-A6C3-8B8075D2D014}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D472C3E8-FC8C-4074-A6C3-8B8075D2D014}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D472C3E8-FC8C-4074-A6C3-8B8075D2D014}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{656658FC-CC98-4AEE-8EB6-EE293AEBC9F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{656658FC-CC98-4AEE-8EB6-EE293AEBC9F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{656658FC-CC98-4AEE-8EB6-EE293AEBC9F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{656658FC-CC98-4AEE-8EB6-EE293AEBC9F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF785E46-F403-4588-9400-393D9D8C958B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF785E46-F403-4588-9400-393D9D8C958B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF785E46-F403-4588-9400-393D9D8C958B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF785E46-F403-4588-9400-393D9D8C958B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RandomChat.Xamarin.Pages.MainPage"
+             Title="Random Chat"
+             BackgroundColor="DarkCyan">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Text="Witaj w random chat!"
+                Grid.Row="0"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="40"/>
+
+            <Button Text="Kliknij aby zacząć rozmowę"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Center"
+                    HeightRequest="100"
+                    WidthRequest="300"
+                    BackgroundColor="Aqua"
+                    Grid.Row="1"
+                    Command="{Binding StartChat}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
