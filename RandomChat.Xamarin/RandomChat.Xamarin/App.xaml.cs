@@ -1,14 +1,12 @@
 ﻿using RandomChat.Xamarin.MvvmPackage;
 using RandomChat.Xamarin.PageModels;
-using RandomChat.Xamarin.Pages;
-using RandomChat.Xamarin.Services;
 
 namespace RandomChat.Xamarin
 {
     public partial class App : Application
     {
 
-        public App() : base()
+        public App()
         {
             InitializeComponent();
             SetStartPage<MainPageModel>();

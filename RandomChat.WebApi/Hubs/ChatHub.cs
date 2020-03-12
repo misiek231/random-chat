@@ -23,6 +23,7 @@ namespace RandomChat.WebApi.Hubs
 
         public override async Task OnConnectedAsync()
         {
+            Console.WriteLine("OnConnectedAsync");
             if (_chatsContainer.NewClient(Context.ConnectionId, out string secondClient))
             {
                 await Clients.Caller.SendAsync("StartChat");

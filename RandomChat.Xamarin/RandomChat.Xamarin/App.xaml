@@ -7,6 +7,22 @@
              xmlns:app="clr-namespace:RandomChat.Xamarin.MvvmPackage;assembly=RandomChat.Xamarin.MvvmPackage"
              x:Class="RandomChat.Xamarin.App">
     <Application.Resources>
-        
+        <ResourceDictionary>
+
+            <!-- Styles -->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarTextColor" Value="White"/>
+            </Style>
+            <!-- Styles -->
+
+            <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Material Design Icons" />
+                <On Platform="Android" Value="materialdesignicons-webfont.ttf#Material Design Icons" />
+                <On Platform="UWP" Value="Assets/Fonts/materialdesignicons-webfont.ttf#Material Design Icons" />
+            </OnPlatform>
+
+            <x:String x:Key="Send">\U000f048a</x:String>
+
+        </ResourceDictionary>
     </Application.Resources>
 </app:Application>

@@ -8,5 +8,6 @@ namespace RandomChat.Xamarin.MvvmPackage.Services.Interfaces
     public interface INavigationService
     {
         Task NavigateToAsync<TPageModel>() where TPageModel : PageModelBase;
+        Task PopAsync();
     }
 }

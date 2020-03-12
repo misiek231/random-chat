@@ -1,25 +1,54 @@
-﻿using RandomChat.Xamarin.MvvmPackage;
-using RandomChat.Xamarin.MvvmPackage.Commands;
+﻿using PropertyChanged;
+using RandomChat.Xamarin.MvvmPackage;
 using RandomChat.Xamarin.MvvmPackage.Services.Interfaces;
+using RandomChat.Xamarin.Services.Interfaces;
 using System.Threading.Tasks;
-using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace RandomChat.Xamarin.PageModels
 {
+    [AddINotifyPropertyChangedInterface]
     public class MainPageModel : PageModelBase
     {
-        public ICommand StartChat { get; set; }
-        private readonly INavigationService _navigationService;
+        public Command StartChat { get; set; }
 
-        public MainPageModel(INavigationService navigationService)
+        public bool Searching
         {
-            _navigationService = navigationService;
-            StartChat = new AsyncCommand(ExecuteStartChat);
+            get => searching;
+            set
+            {
+                searching = value;
+                StartChat.ChangeCanExecute();
+            }
         }
 
-        private async Task ExecuteStartChat()
+        private readonly INavigationService _navigationService;
+        private readonly IChatService _chatService;
+        private bool searching;
+
+        public MainPageModel(INavigationService navigationService, IChatService chatService)
         {
-            await _navigationService.NavigateToAsync<ChatPageModel>();
+            _navigationService = navigationService;
+            _chatService = chatService;
+            chatService.ChatStarted += async (s, e) => await ChatStarted().ConfigureAwait(false);
+            StartChat = new Command(ExecuteStartChat, () => !Searching);
+        }
+
+        public override Task OnAppearingAsync()
+        {
+            Searching = false;
+            return base.OnAppearingAsync();
+        }
+
+        private Task ChatStarted()
+        {
+            return _navigationService.NavigateToAsync<ChatPageModel>();
+        }
+
+        private async void ExecuteStartChat()
+        {
+            Searching = true;
+            await _chatService.StartNewChatAsync().ConfigureAwait(false);
         }
     }
 }
