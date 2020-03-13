@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+﻿import React, { Component } from 'react';
 import Inputs from './inputs'
 import ChatWindow from './chat_window'
 import './App.css';
@@ -31,6 +31,11 @@ class App extends Component {
         message: {message: message, isMain: false}
       })
     });
+
+      connection.on("ClientDisconnected", function () {
+          console.log('ClientDisconnected')
+          alert("Rozmowa zakończona! Odśwież stronę")
+      });
 
     connection.start().then(function () {
       console.log('connected')

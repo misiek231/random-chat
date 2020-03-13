@@ -9,6 +9,6 @@ namespace RandomChat.WebApi.Services.Interfaces
     {
         bool NewClient(string connectionId, out string secondClient);
         string GetTargetClient(string connectionId);
-        string DestroyChat(string connectionId);
+        string DisconnectClientAndGetSecondChatter(string connectionId);
     }
 }

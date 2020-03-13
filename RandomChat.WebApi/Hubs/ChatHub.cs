@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using RandomChat.WebApi.Services.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace RandomChat.WebApi.Hubs
@@ -34,8 +32,15 @@ namespace RandomChat.WebApi.Hubs
 
         public override async Task OnDisconnectedAsync(Exception exception)
         {
-            await Clients.Client(_chatsContainer.DestroyChat(Context.ConnectionId)).SendAsync("ClientDisconnected");
-            await base.OnDisconnectedAsync(exception);
+            Console.WriteLine("Client Disconnected");
+            string id = _chatsContainer.DisconnectClientAndGetSecondChatter(Context.ConnectionId);
+            if (id != null)
+            {
+                Console.WriteLine("DestroyChat");
+                await Clients.Client(id).SendAsync("ClientDisconnected").ConfigureAwait(false);
+                Context.Abort();
+            }
+            await base.OnDisconnectedAsync(exception).ConfigureAwait(false);
         }
     }
 }

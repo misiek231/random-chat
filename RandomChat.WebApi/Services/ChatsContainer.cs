@@ -2,20 +2,24 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace RandomChat.WebApi.Services
 {
     public class ChatsContainer : IChatsContainer
     {
-        private string waitingClientId = null;
+        private string waitingClientId;
         private readonly List<Chat> chats = new List<Chat>();
 
-        public string DestroyChat(string connectionId)
+        public string DisconnectClientAndGetSecondChatter(string connectionId)
         {
-            Chat chat = chats.Where(c => c.GetTargetClient(connectionId) != null).FirstOrDefault();
-            chats.Remove(chat);
-            return chat.GetTargetClient(connectionId);
+            if (connectionId == waitingClientId)
+            {
+                waitingClientId = null;
+                return null;
+            }
+            Chat chat = chats.Find(c => c.GetTargetClient(connectionId) != null);
+            chats?.Remove(chat);
+            return chat?.GetTargetClient(connectionId);
         }
 
         public string GetTargetClient(string connectionId)
@@ -30,6 +34,7 @@ namespace RandomChat.WebApi.Services
                 chats.Add(new Chat(connectionId, waitingClientId));
                 secondClient = waitingClientId;
                 waitingClientId = null;
+                Console.WriteLine("Chat created");
                 return true;
             }
             else
@@ -55,11 +60,17 @@ namespace RandomChat.WebApi.Services
         public string GetTargetClient(string connectionId)
         {
             if (connectionId == FirstClient)
+            {
                 return SecondClient;
+            }
             else if (connectionId == SecondClient)
+            {
                 return FirstClient;
+            }
             else
+            {
                 return null;
+            }
         }
     }
 }
