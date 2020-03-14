@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"            
+             xmlns:local="clr-namespace:RandomChat.Xamarin.MvvmPackage.Converters;assembly=RandomChat.Xamarin.MvvmPackage"
+             x:Class="RandomChat.Xamarin.Pages.MainPage"
+             Title="Random Chat"
+             BackgroundColor="#086972"
+             Visual="Material">
+    <ContentPage.Content>
+
+       
+        <StackLayout Spacing="50">
+            <Label Text="Witaj w random chat!"
+                   TextColor="White"
+                   VerticalOptions="Start"
+                   HorizontalOptions="CenterAndExpand"
+                   FontAttributes="Bold"
+                   Margin="0, 30, 0, 0"
+                   FontSize="40"/>
+
+            <Label Text="Rozmawiaj z nieznajomymi, dyskutuj na przeróżne tematy, dziel się wiedzą :)"
+                   TextColor="White"
+                   VerticalOptions="Start"
+                   HorizontalOptions="CenterAndExpand"
+                   HorizontalTextAlignment="Center"
+                   FontSize="25"/>
+            
+            <Button Text="Rozpocznij chat"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Center"
+                    HeightRequest="100"
+                    WidthRequest="300"
+                    BackgroundColor="#17b978"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    Command="{Binding StartChat}"/>
+
+            <ActivityIndicator 
+                IsRunning="{Binding Searching}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

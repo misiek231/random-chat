@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"      
+             x:Class="RandomChat.Xamarin.Pages.ChatPage"
+             BackgroundColor="#086972"
+             xmlns:icons="clr-namespace:RandomChat.Xamarin;assembly=RandomChat.Xamarin"
+             Visual="Material"
+             Title="Rozmowa">
+    <ContentPage.Content>
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+
+            <CollectionView BackgroundColor="#086972"
+                            Grid.Row="0"
+                            ItemsSource="{Binding Messages}">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Frame BackgroundColor="Accent" CornerRadius="10" HorizontalOptions="Start" HasShadow="True" Padding="10" Margin="10, 5, 100, 0">
+                                <Frame.Triggers>
+                                    <DataTrigger TargetType="Frame" Binding="{Binding IsMain}" Value="True">
+                                        <Setter Property="HorizontalOptions" Value="End" />
+                                        <Setter Property="Margin" Value="100, 5, 10, 0" />
+                                        <Setter Property="BackgroundColor" Value="#17b978" />
+                                    </DataTrigger>
+                                </Frame.Triggers>
+
+                                <Label Text="{Binding Content }" FontSize="20" TextColor="White"/>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Frame
+                Grid.Row="1" 
+                   Margin="5"
+                Padding="0"
+                   BackgroundColor="#17b978">
+                <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="80"/>
+                </Grid.ColumnDefinitions>
+
+                <Editor
+                        Grid.Column="0"
+                        Margin="0"
+                    Placeholder="Napisz widaomość"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        TextColor="White"
+                        Text="{Binding MessageBoxContent}" />
+
+                <Button Grid.Column="1"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="Transparent"
+                        Visual="Default"
+                        TextColor="White"
+                        Command="{Binding SendCommand}"
+                        FontFamily="{StaticResource MaterialFontFamily}"
+                        FontSize="40"
+                        Text="{ x:Static icons:Icons.Send }"/>
+
+            </Grid>
+            </Frame>
+        </Grid>
+            
+    </ContentPage.Content>
+</ContentPage>

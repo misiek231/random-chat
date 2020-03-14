@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<app:Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:app="clr-namespace:RandomChat.Xamarin.MvvmPackage;assembly=RandomChat.Xamarin.MvvmPackage"
+             x:Class="RandomChat.Xamarin.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <!-- Styles -->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarTextColor" Value="White"/>
+            </Style>
+            <!-- Styles -->
+
+            <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Material Design Icons" />
+                <On Platform="Android" Value="materialdesignicons-webfont.ttf#Material Design Icons" />
+                <On Platform="UWP" Value="Assets/Fonts/materialdesignicons-webfont.ttf#Material Design Icons" />
+            </OnPlatform>
+
+            <x:String x:Key="Send">\U000f048a</x:String>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</app:Application>
