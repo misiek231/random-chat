@@ -36,8 +36,13 @@ namespace RandomChat.Xamarin.Services
 
         public async Task StopChatAsync()
         {
+            if(_hubConnection == null)
+            {
+                return;
+            }
             await _hubConnection.StopAsync().ConfigureAwait(false);
             await _hubConnection.DisposeAsync().ConfigureAwait(false);
+            _hubConnection = null;
         }
     }
 }

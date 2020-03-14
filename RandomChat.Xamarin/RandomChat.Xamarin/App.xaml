@@ -4,25 +4,77 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:icons="clr-namespace:RandomChat.Xamarin;assembly=RandomChat.Xamarin"
              xmlns:app="clr-namespace:RandomChat.Xamarin.MvvmPackage;assembly=RandomChat.Xamarin.MvvmPackage"
              x:Class="RandomChat.Xamarin.App">
     <Application.Resources>
         <ResourceDictionary>
-
-            <!-- Styles -->
-            <Style TargetType="NavigationPage">
-                <Setter Property="BarTextColor" Value="White"/>
-            </Style>
-            <!-- Styles -->
+            <Color x:Key="Primary">#086972</Color>
+            <Color x:Key="PrimaryDark">#003e47</Color>
+            <Color x:Key="PrimaryLight">#4997a0</Color>
+            <Color x:Key="Secondary">#17ba78</Color>
+            <Color x:Key="SecondaryDark">#00894c</Color>
+            <Color x:Key="SecondaryLight">#5feda7</Color>
+            <Color x:Key="Accent">#FF4081</Color>
 
             <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
                 <On Platform="iOS" Value="Material Design Icons" />
                 <On Platform="Android" Value="materialdesignicons-webfont.ttf#Material Design Icons" />
                 <On Platform="UWP" Value="Assets/Fonts/materialdesignicons-webfont.ttf#Material Design Icons" />
             </OnPlatform>
+            
+            <!-- Styles -->
 
-            <x:String x:Key="Send">\U000f048a</x:String>
+            <Style x:Key="MessageFrame" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="HasShadow" Value="True"/>
+                <Setter Property="Padding" Value="10"/>
+            </Style>
 
+            <Style x:Key="ChatterMessageFrame" TargetType="Frame" BasedOn="{StaticResource MessageFrame}">
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="Margin" Value="10, 5, 100, 0" />
+                <Setter Property="BackgroundColor" Value="{StaticResource Accent}" />
+            </Style>
+            
+            <Style x:Key="MainMessageFrame" TargetType="Frame" BasedOn="{StaticResource MessageFrame}">
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="Margin" Value="100, 5, 10, 0" />
+                <Setter Property="BackgroundColor" Value="{StaticResource Secondary}" />
+            </Style>
+
+            <Style x:Key="MessageLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+
+            <Style x:Key="InputsFrame" TargetType="Frame">
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="BackgroundColor" Value="{StaticResource Secondary}" />
+            </Style>
+
+            <Style x:Key="MessageEditor" TargetType="Editor">
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="Keyboard" Value="Chat" />
+                <Setter Property="AutoSize" Value="TextChanges" />
+                <Setter Property="Placeholder" Value="Napisz widaomość" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+
+            <Style x:Key="SendMessageButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="FontFamily" Value="{StaticResource MaterialFontFamily}" />
+                <Setter Property="FontSize" Value="40" />
+                <Setter Property="Text" Value="{ x:Static icons:Icons.Send }" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="Visual" Value="Default" />
+            </Style>
+            <!-- Styles -->
         </ResourceDictionary>
     </Application.Resources>
 </app:Application>

@@ -16,5 +16,10 @@ namespace RandomChat.Xamarin.MvvmPackage
         {
             return Task.CompletedTask;
         }
+
+        public virtual Task OnPopped()
+        {
+            return Task.CompletedTask;
+        }
     }
 }

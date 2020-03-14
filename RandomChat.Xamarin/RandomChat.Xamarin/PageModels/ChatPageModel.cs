@@ -4,6 +4,7 @@ using RandomChat.Xamarin.MvvmPackage;
 using RandomChat.Xamarin.MvvmPackage.Commands;
 using RandomChat.Xamarin.MvvmPackage.Services.Interfaces;
 using RandomChat.Xamarin.Services.Interfaces;
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -36,7 +37,7 @@ namespace RandomChat.Xamarin.PageModels
             return _navigationService.PopAsync();
         }
 
-        public override async Task OnDisappearingAsync()
+        public override async Task OnPopped()
         {
             await _chatService.StopChatAsync().ConfigureAwait(false);
         }
@@ -53,13 +54,22 @@ namespace RandomChat.Xamarin.PageModels
 
         private async Task SendAction()
         {
-            Messages.Add(new Message
-            {
-                Content = MessageBoxContent,
-                IsMain = true
-            });
+            await MainThread.InvokeOnMainThreadAsync(() =>
+                Messages.Add(new Message
+                {
+                    Content = MessageBoxContent,
+                    IsMain = true
+                })).ConfigureAwait(false);
 
-            await _chatService.SendMessageAsync(MessageBoxContent).ConfigureAwait(false);
+            try
+            {
+                await _chatService.SendMessageAsync(MessageBoxContent).ConfigureAwait(false);
+                MessageBoxContent = "";
+            }
+            catch (Exception)
+            {
+                await _navigationService.PopAsync().ConfigureAwait(false);
+            }
         }
     }
 }
