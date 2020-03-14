@@ -5,35 +5,29 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"      
              x:Class="RandomChat.Xamarin.Pages.ChatPage"
-             BackgroundColor="#086972"
-             xmlns:icons="clr-namespace:RandomChat.Xamarin;assembly=RandomChat.Xamarin"
              Visual="Material"
              Title="Rozmowa">
     <ContentPage.Content>
         <Grid>
-
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="70"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <CollectionView BackgroundColor="#086972"
-                            Grid.Row="0"
-                            ItemsSource="{Binding Messages}">
-
+            <CollectionView
+                Grid.Row="0"
+                ItemsSource="{Binding Messages}"
+                ItemsUpdatingScrollMode="KeepLastItemInView">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
-                            <Frame BackgroundColor="Accent" CornerRadius="10" HorizontalOptions="Start" HasShadow="True" Padding="10" Margin="10, 5, 100, 0">
+                            <Frame Style="{ StaticResource ChatterMessageFrame }">
                                 <Frame.Triggers>
                                     <DataTrigger TargetType="Frame" Binding="{Binding IsMain}" Value="True">
-                                        <Setter Property="HorizontalOptions" Value="End" />
-                                        <Setter Property="Margin" Value="100, 5, 10, 0" />
-                                        <Setter Property="BackgroundColor" Value="#17b978" />
+                                        <Setter Property="Style" Value="{ StaticResource MainMessageFrame }" />
                                     </DataTrigger>
                                 </Frame.Triggers>
-
-                                <Label Text="{Binding Content }" FontSize="20" TextColor="White"/>
+                                <Label Text="{Binding Content }" Style="{StaticResource MessageLabel}"/>
                             </Frame>
                         </Grid>
                     </DataTemplate>
@@ -41,38 +35,23 @@
             </CollectionView>
             <Frame
                 Grid.Row="1" 
-                   Margin="5"
-                Padding="0"
-                   BackgroundColor="#17b978">
+                Style="{StaticResource InputsFrame}">
                 <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="80"/>
-                </Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
-                <Editor
-                        Grid.Column="0"
-                        Margin="0"
-                    Placeholder="Napisz widaomość"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        TextColor="White"
-                        Text="{Binding MessageBoxContent}" />
-
-                <Button Grid.Column="1"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        BackgroundColor="Transparent"
-                        Visual="Default"
-                        TextColor="White"
+                    <Editor
+                        Grid.Column="0"                          
+                        Text="{Binding MessageBoxContent}" 
+                        Style="{StaticResource MessageEditor}" />
+                    <Button 
+                        Grid.Column="1"                       
                         Command="{Binding SendCommand}"
-                        FontFamily="{StaticResource MaterialFontFamily}"
-                        FontSize="40"
-                        Text="{ x:Static icons:Icons.Send }"/>
-
-            </Grid>
+                        Style="{StaticResource SendMessageButton}"/>
+                </Grid>
             </Frame>
         </Grid>
-            
     </ContentPage.Content>
 </ContentPage>

@@ -16,7 +16,7 @@ namespace RandomChat.WebApi.Hubs
 
         public async Task Message(string message)
         {
-            await Clients.Client(_chatsContainer.GetTargetClient(Context.ConnectionId)).SendAsync("Message", message);
+            await Clients.Client(_chatsContainer.GetTargetClient(Context.ConnectionId)).SendAsync("Message", message).ConfigureAwait(false);
         }
 
         public override async Task OnConnectedAsync()
@@ -24,10 +24,10 @@ namespace RandomChat.WebApi.Hubs
             Console.WriteLine("OnConnectedAsync");
             if (_chatsContainer.NewClient(Context.ConnectionId, out string secondClient))
             {
-                await Clients.Caller.SendAsync("StartChat");
-                await Clients.Client(secondClient).SendAsync("StartChat");
+                await Clients.Caller.SendAsync("StartChat").ConfigureAwait(false);
+                await Clients.Client(secondClient).SendAsync("StartChat").ConfigureAwait(false);
             }
-            await base.OnConnectedAsync();
+            await base.OnConnectedAsync().ConfigureAwait(false);
         }
 
         public override async Task OnDisconnectedAsync(Exception exception)
